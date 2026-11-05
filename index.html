@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  ANDREI NOZDRIN — business-card site
+  EDIT ME (search for [BRACKETS]):
+    1. City:            DONE — Phuket, Thailand
+    2. Phone:           DONE — +66 6 2842 3951 (Thailand) / WhatsApp +7 909 236-53-21
+    3. Email:           DONE — nozdrin@list.ru
+    4. Years in timeline: DONE — 2016 – August 2026
+    5. Resume button:   href="Resume_Andrei_Nozdrin_EN.docx" —
+       put the .docx in the same folder as index.html (or use your URL)
+  Portfolio section: CAROUSELS — photos render as plain images (no captions, no delete buttons);
+  category folders: portfolio/ac, fridge, kitchen, hh, elec, water. "Team & training" hidden for now.
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrei Nozdrin — Engineering · HVAC & VRF · Electrical · Refrigeration</title>
+<meta name="description" content="Engineering professional with 10 years of experience in HVAC, VRF, refrigeration, kitchen plant and electrical systems up to 1,000 V. 3,000+ unit service portfolio. Open to engineering roles in Thailand.">
+<style>
+  :root{
+    --navy:#1f3864;
+    --navy-2:#27477c;
+    --ink:#22293a;
+    --muted:#5b6474;
+    --line:#e3e8f0;
+    --bg:#ffffff;
+    --bg-soft:#f5f7fb;
+    --amber:#e8a33d;
+    --amber-soft:#fdf3e2;
+    --green:#2e8b57;
+    --radius:14px;
+    --shadow:0 6px 24px rgba(31,56,100,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px;
+  }
+  img{max-width:100%}
+  a{color:var(--navy)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-weight:700;color:var(--navy);text-decoration:none;font-size:1.02rem;letter-spacing:.2px}
+  .brand span{color:var(--amber)}
+  nav ul{display:flex;gap:26px;list-style:none}
+  nav a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500}
+  nav a:hover{color:var(--navy)}
+  .nav-cta{
+    background:var(--navy);color:#fff!important;padding:9px 18px;border-radius:9px;font-weight:600;
+  }
+  .nav-cta:hover{background:var(--navy-2)}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:6px}
+  .burger span{display:block;width:24px;height:2.5px;background:var(--navy);margin:5px 0;border-radius:2px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 380px at 85% -10%, rgba(232,163,61,.14), transparent 60%),
+      linear-gradient(160deg,#16294a 0%, #1f3864 55%, #27477c 100%);
+    color:#fff;padding:74px 0 64px;
+  }
+  .hero .kicker{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;
+    font-size:.85rem;letter-spacing:.4px;margin-bottom:20px;
+  }
+  .hero .kicker .dot{width:8px;height:8px;border-radius:50%;background:#5fd08a;box-shadow:0 0 0 4px rgba(95,208,138,.2)}
+  .hero h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.5px;line-height:1.12}
+  .hero .role{font-size:clamp(1.05rem,2.4vw,1.35rem);color:#cdd9ee;margin-top:10px;font-weight:500}
+  .hero .loc{margin-top:14px;color:#9fb2d4;font-size:.98rem}
+  .hero .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .chip{
+    font-size:.85rem;padding:7px 14px;border-radius:999px;font-weight:500;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  }
+  .chip.amber{background:var(--amber);border-color:var(--amber);color:#2a1d05;font-weight:700}
+  .hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;text-decoration:none;font-size:1rem;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--amber);color:#241804}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.45);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+
+  .hero-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .hero-photo{
+    flex:0 0 auto;width:120px;height:120px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.3rem;font-weight:800;color:#fff;letter-spacing:1px;
+    background:linear-gradient(140deg,#27477c,#e8a33d);
+    border:3px solid rgba(255,255,255,.55);box-shadow:0 6px 20px rgba(0,0,0,.3);
+  }
+  .hero-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+
+  /* ---------- stats ---------- */
+  .stats{margin-top:-34px;position:relative;z-index:5}
+  .stats .grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:22px 26px;
+  }
+  .stat b{display:block;font-size:1.55rem;color:var(--navy);font-weight:800;letter-spacing:-.5px}
+  .stat span{font-size:.85rem;color:var(--muted)}
+
+  /* ---------- sections ---------- */
+  section{padding:66px 0}
+  section.soft{background:var(--bg-soft)}
+  h2.sec{
+    font-size:1.7rem;font-weight:800;color:var(--navy);letter-spacing:-.3px;margin-bottom:8px;
+  }
+  p.sec-sub{color:var(--muted);margin-bottom:30px;max-width:760px}
+
+  /* profile */
+  .profile-card{
+    background:#fff;border:1px solid var(--line);border-left:5px solid var(--amber);
+    border-radius:var(--radius);padding:26px 30px;box-shadow:var(--shadow);
+    font-size:1.04rem;color:#333c4e;
+  }
+
+  /* competency cards */
+  .comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .comp{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .comp:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .comp .ico{font-size:1.5rem;line-height:1;margin-bottom:10px;display:block}
+  .comp h3{font-size:1.02rem;color:var(--navy);margin-bottom:6px}
+  .comp p{font-size:.92rem;color:var(--muted)}
+
+  /* featured project */
+  .featured{
+    display:grid;grid-template-columns:1.25fr 1fr;gap:0;
+    background:linear-gradient(150deg,#16294a,#27477c);color:#fff;
+    border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  }
+  .featured .txt{padding:34px 36px}
+  .featured .tag{
+    display:inline-block;background:var(--amber);color:#241804;font-weight:700;font-size:.75rem;
+    letter-spacing:.8px;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:14px;
+  }
+  .featured h3{font-size:1.45rem;font-weight:800;margin-bottom:10px;letter-spacing:-.3px}
+  .featured p{color:#c6d3ea;font-size:.98rem}
+  .featured ul{margin-top:16px;list-style:none}
+  .featured li{padding:7px 0 7px 26px;position:relative;color:#e6ecf7;font-size:.95rem}
+  .featured li::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:700}
+  .featured .side{
+    background:rgba(255,255,255,.07);border-left:1px solid rgba(255,255,255,.15);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;padding:30px;text-align:center;
+  }
+  .featured .side b{font-size:2.6rem;font-weight:800;color:var(--amber);letter-spacing:-1px;line-height:1.1}
+  .featured .side span{color:#c6d3ea;font-size:.92rem;margin-top:8px;max-width:200px}
+
+  /* timeline */
+  .timeline{position:relative;margin-left:8px;padding-left:30px;border-left:2px solid var(--line)}
+  .tl-item{position:relative;padding-bottom:38px}
+  .tl-item:last-child{padding-bottom:6px}
+  .tl-item::before{
+    content:"";position:absolute;left:-39px;top:4px;width:16px;height:16px;border-radius:50%;
+    background:#fff;border:4px solid var(--navy);
+  }
+  .tl-item .when{font-size:.85rem;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.6px}
+  .tl-item h3{font-size:1.12rem;color:var(--navy);margin:4px 0 2px}
+  .tl-item .where{color:var(--muted);font-size:.92rem;margin-bottom:10px}
+  .tl-item ul{list-style:none}
+  .tl-item li{padding:4px 0 4px 22px;position:relative;font-size:.95rem;color:#39424f}
+  .tl-item li::before{content:"—";position:absolute;left:0;color:var(--amber)}
+
+  /* languages */
+  .lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .lang{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;text-align:center}
+  .lang h3{font-size:1.05rem;color:var(--navy)}
+  .lang .lvl{margin-top:8px;font-size:.9rem;color:var(--muted)}
+  .lang .bar{height:6px;background:var(--line);border-radius:99px;margin-top:14px;overflow:hidden}
+  .lang .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--navy),var(--amber));border-radius:99px}
+
+  /* portfolio */
+  .carousel{position:relative;margin:0 -6px;padding:0 6px}
+  .car-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px}
+  .car-track .pf-item{flex:0 0 250px;max-width:250px;scroll-snap-align:start}
+  .car-btn{position:absolute;top:45%;transform:translateY(-50%);z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);font-size:1.25rem;line-height:1;cursor:pointer;box-shadow:var(--shadow)}
+  .car-btn:hover{background:var(--bg-soft)}
+  .car-prev{left:-8px}
+  .car-next{right:-8px}
+  .pf-cat{font-size:1.05rem;font-weight:700;color:var(--navy);margin:30px 0 12px;letter-spacing:.2px}
+  .pf-cat:first-of-type{margin-top:8px}
+  .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .ph{
+    aspect-ratio:4/3;border:2px dashed #c4cfe0;border-radius:var(--radius);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    color:#8b97ab;background:repeating-linear-gradient(45deg,#fafbfd,#fafbfd 12px,#f3f6fa 12px,#f3f6fa 24px);
+    text-align:center;padding:16px;
+  }
+  .ph .big{font-size:1.9rem}
+  .ph b{color:var(--muted);font-size:.95rem}
+  .ph small{font-size:.8rem;max-width:200px}
+  /* Portfolio: replace each .ph card with a real item like:
+     <figure class="pf-item"><img src="portfolio/vrf-01.jpg" alt="VRF system service"><figcaption>VRF maintenance — client, year</figcaption></figure>
+  */
+  .pf-item{overflow:hidden}
+  .pf-item img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .c-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;text-align:center}
+  .c-card .ico{font-size:1.6rem;display:block;margin-bottom:8px}
+  .c-card b{display:block;color:var(--navy);margin-bottom:4px}
+  .c-card a,.c-card span.val{color:var(--muted);text-decoration:none;font-size:.95rem;word-break:break-all}
+  .c-card a:hover{color:var(--navy)}
+  .note{margin-top:22px;font-size:.92rem;color:var(--muted);text-align:center}
+
+  footer{background:#16294a;color:#9fb2d4;text-align:center;padding:26px 0;font-size:.88rem}
+  footer b{color:#fff}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .stats .grid{grid-template-columns:repeat(2,1fr)}
+    .comp-grid,.pf-grid,.lang-grid,.contact-grid{grid-template-columns:repeat(2,1fr)}
+    .featured{grid-template-columns:1fr}
+    .featured .side{border-left:none;border-top:1px solid rgba(255,255,255,.15)}
+  }
+  @media (max-width:640px){
+    .comp-grid,.pf-grid,.lang-grid,.contact-grid{grid-template-columns:1fr}
+    nav ul{
+      display:none;position:absolute;top:62px;left:0;right:0;background:#fff;
+      flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:10px 0;
+      box-shadow:var(--shadow);
+    }
+    nav ul.open{display:flex}
+    nav ul li{padding:12px 22px}
+    .nav-cta{display:inline-block;margin:6px 22px 14px;text-align:center}
+    .burger{display:block}
+    .hero{padding:54px 0 58px}
+    section{padding:48px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">Andrei <span>Nozdrin</span></a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a class="nav-cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <div class="kicker"><span class="dot"></span> Available for work · Open to Engineering roles</div>
+        <h1>Andrei Nozdrin</h1>
+      </div>
+      <div class="hero-photo"><img src="profile.jpg" alt="Andrei Nozdrin — maintenance engineer at work in a commercial kitchen"></div>
+    </div>
+    <div class="role" style="font-size:1.02rem;color:#9fb2d4">HVAC &amp; VRF &nbsp;·&nbsp; Refrigeration &amp; Cold Rooms &nbsp;·&nbsp; Kitchen Plant &nbsp;·&nbsp; Electrical ≤ 1,000 V &nbsp;·&nbsp; Engineering Systems &nbsp;·&nbsp; Controller Programming</div>
+    <div class="loc">📍 Phuket, Thailand &nbsp;·&nbsp; planning to settle long-term &nbsp;·&nbsp; open to relocate for the right role</div>
+    <div class="chips">
+      <span class="chip amber">Ready to start immediately</span>
+      <span class="chip">24/7 on-call &amp; shift work</span>
+      <span class="chip">Staff training &amp; team leadership</span>
+      <span class="chip">10 years hands-on</span>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:nozdrin@list.ru">✉ Get in touch</a>
+      <a class="btn btn-ghost" href="Resume_Andrei_Nozdrin_EN.docx" download>⬇ Download resume</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= STATS ================= -->
+<div class="wrap stats">
+  <div class="grid">
+    <div class="stat"><b>10+</b><span>years in HVAC, refrigeration &amp; electrical service</span></div>
+    <div class="stat"><b>3,000+</b><span>AC units incl. VRF under one service contract</span></div>
+    <div class="stat"><b>1,000 V</b><span>electrical safety licence (installations)</span></div>
+    <div class="stat"><b>Several</b><span>master-technician crews supervised &amp; trained</span></div>
+  </div>
+</div>
+
+<!-- ================= PROFILE ================= -->
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec reveal">About me</h2>
+    <p class="sec-sub reveal">A career built bottom-up: service-centre master → private master → contractor serving restaurants and industrial enterprises.</p>
+    <div class="profile-card reveal">
+      Engineering professional with <b>10 years of hands-on experience</b> in installation, maintenance and repair of
+      HVAC, refrigeration and electrical systems in commercial and industrial environments.
+      Standout achievement: delivered a service contract covering a <b>3,000+ unit air-conditioning portfolio including VRF systems</b> at a major
+      industrial enterprise (ROSATOM Group) — managing several crews of master technicians and training plant staff.
+      Electrically qualified — <b>safety licence for installations up to 1,000 V</b>. Proven in preventive maintenance
+      programmes, full-cycle repairs (diagnostics → parts sourcing → repair → handover), team supervision and documentation.
+      All professional experience gained in <b>Russia</b> (no overseas work experience to date) — planning to settle and build a long-term career in <b>Thailand</b>; currently based in Phuket. Comfortable with shift work and emergency response;
+      committed to intensive English development (current level A1).
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="soft" id="skills">
+  <div class="wrap">
+    <h2 class="sec reveal">Core competencies</h2>
+    <p class="sec-sub reveal">Mapped to the building-services scope of hotel &amp; resort engineering: HVAC, plant, kitchen, electrical, safety, supervision.</p>
+    <div class="comp-grid">
+      <div class="comp reveal"><span class="ico">❄️</span><h3>HVAC &amp; VRF</h3><p>VRF multi-systems and 3,000+ unit AC portfolios: diagnostics, repair; copper pipe soldering; leak testing and refrigerant handling/charging (R410A/R32); split and ducted air conditioners; energy-efficient operation.</p></div>
+      <div class="comp reveal"><span class="ico">🧊</span><h3>Refrigeration &amp; Cold Rooms</h3><p>Commercial refrigerators and freezers, ice makers, cold rooms — installation, maintenance and full hands-on repair; refrigerant circuits: leak repair, vacuuming and charging.</p></div>
+      <div class="comp reveal"><span class="ico">🍕</span><h3>Kitchen Equipment</h3><p>Combi ovens, pizza ovens, fryers, dishwashers, microwave ovens — complete in-house repair, no outsourcing.</p></div>
+      <div class="comp reveal"><span class="ico">⚡</span><h3>Electrical</h3><p>Safety licence for work on installations up to 1,000 V; wiring, motor and compressor repair, fault-finding, panels; basic-level PCB (board) repair and soldering.</p></div>
+      <div class="comp reveal"><span class="ico">🎛️</span><h3>Engineering Systems</h3><p>Controller programming; tuning and configuration of engineering systems — smart-home and building-automation devices; PC-literate, documentation and reporting.</p></div>
+      <div class="comp reveal"><span class="ico">👷</span><h3>Supervision &amp; Management</h3><p>Multi-crew management, PM scheduling, work orders and reporting, spare-parts sourcing, staff training and team leadership.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURED PROJECT ================= -->
+<section>
+  <div class="wrap">
+    <h2 class="sec reveal">Flagship achievement</h2>
+    <p class="sec-sub reveal">The largest service contract of my career — delivered within the 2021–2026 business period.</p>
+    <div class="featured reveal">
+      <div class="txt">
+        <span class="tag">Flagship achievement · Industrial HVAC · Russia</span>
+        <h3>HVAC service contract — ROSATOM Group enterprise</h3>
+        <p>Full-service maintenance of the enterprise air-conditioning infrastructure as lead contractor.</p>
+        <ul>
+          <li>3,000+ air-conditioning units including VRF multi-systems under one contract</li>
+          <li>Managed and scheduled work of several crews of master technicians</li>
+          <li>Trained plant staff on equipment operation and basic maintenance</li>
+          <li>Preventive programmes, breakdown response, parts sourcing, full documentation</li>
+        </ul>
+      </div>
+      <div class="side">
+        <b>3,000+</b>
+        <span>units of air-conditioning equipment under one service contract</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="soft" id="experience">
+  <div class="wrap">
+    <h2 class="sec reveal">Experience</h2>
+    <p class="sec-sub reveal">10 years, one direction: from apprentice master to independent engineering contractor.</p>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="when">2021 — August 2026</div>
+        <h3>Independent Maintenance Contractor (Sole Proprietor)</h3>
+        <div class="where">HVAC · Refrigeration · Kitchen equipment · Electrical</div>
+        <ul>
+          <li>Won and delivered maintenance contracts for restaurants and corporate facilities across Russia</li>
+          <li>Standout achievement: 3,000+ AC units incl. VRF at a ROSATOM Group enterprise — crew management, staff training</li>
+          <li>Full-cycle repairs: diagnostics, parts selection &amp; sourcing, ordering, delivery, repair, handover</li>
+          <li>Hand-repair of kitchen &amp; cold-chain plant: combi ovens, pizza ovens, fryers, dishwashers, ice makers, cold rooms</li>
+          <li>Water systems: plumbing installation &amp; repair, PPR/PP pipe welding, water heaters</li>
+          <li>Service records, work orders and client reporting</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="when">2019 — 2021</div>
+        <h3>Private Master — Appliance &amp; HVAC Service</h3>
+        <div class="where">Self-employed · residential &amp; light commercial</div>
+        <ul>
+          <li>Full-cycle service: washing machines, water heaters, microwaves, dishwashers, refrigerators</li>
+          <li>Installation and repair of split &amp; ducted air conditioners; electrical and plumbing works</li>
+          <li>Built a repeat-client base on reliability and on-time service</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="when">2016 — 2019</div>
+        <h3>Master Technician (Foreman) — Appliance Service Centre</h3>
+        <div class="where">Service centre · start of career</div>
+        <ul>
+          <li>Repair of household appliances and air-conditioning units</li>
+          <li>Electrical troubleshooting and diagnostics with precision measuring instruments</li>
+          <li>On-site installation and commissioning of repaired equipment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LANGUAGES ================= -->
+<section>
+  <div class="wrap">
+    <h2 class="sec reveal">Languages</h2>
+    <p class="sec-sub reveal">Working in an international environment and building my professional English.</p>
+    <div class="lang-grid">
+      <div class="lang reveal"><h3>Russian</h3><div class="lvl">Native</div><div class="bar"><i style="width:100%"></i></div></div>
+            <div class="lang reveal"><h3>English</h3><div class="lvl">Basic (A1) — intensive study in progress, building hotel-engineering vocabulary</div><div class="bar"><i style="width:25%"></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="soft" id="portfolio">
+  <div class="wrap">
+    <h2 class="sec reveal">Portfolio</h2>
+    <p class="sec-sub reveal">All work photos by category — scroll each row.</p>
+
+    <h3 class="pf-cat">HVAC — split systems: installation, repair, service</h3>
+    <div class="carousel" data-cat="ac"><button class="car-btn car-prev" type="button" aria-label="Previous">‹</button><div class="car-track"></div><button class="car-btn car-next" type="button" aria-label="Next">›</button></div>
+
+    <h3 class="pf-cat">Refrigeration equipment — repair and service</h3>
+    <div class="carousel" data-cat="fridge"><button class="car-btn car-prev" type="button" aria-label="Previous">‹</button><div class="car-track"></div><button class="car-btn car-next" type="button" aria-label="Next">›</button></div>
+
+    <h3 class="pf-cat">Commercial kitchen equipment — in-house repair</h3>
+    <div class="carousel" data-cat="kitchen"><button class="car-btn car-prev" type="button" aria-label="Previous">‹</button><div class="car-track"></div><button class="car-btn car-next" type="button" aria-label="Next">›</button></div>
+
+    <h3 class="pf-cat">Electrical &amp; electronics</h3>
+    <div class="carousel" data-cat="elec"><button class="car-btn car-prev" type="button" aria-label="Previous">‹</button><div class="car-track"></div><button class="car-btn car-next" type="button" aria-label="Next">›</button></div>
+
+    <h3 class="pf-cat">Water heaters &amp; plumbing</h3>
+    <div class="carousel" data-cat="water"><button class="car-btn car-prev" type="button" aria-label="Previous">‹</button><div class="car-track"></div><button class="car-btn car-next" type="button" aria-label="Next">›</button></div>
+
+    <h3 class="pf-cat">Household appliance repairs</h3>
+    <div class="carousel" data-cat="hh"><button class="car-btn car-prev" type="button" aria-label="Previous">‹</button><div class="car-track"></div><button class="car-btn car-next" type="button" aria-label="Next">›</button></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="sec reveal">Contact</h2>
+    <p class="sec-sub reveal">Open to engineering roles in hotels, resorts and industrial facilities across Thailand. Based in Phuket — available for 24/7 on-call and shift work, ready to start immediately.</p>
+    <div class="contact-grid">
+      <div class="c-card reveal"><span class="ico">✉️</span><b>Email</b><a href="mailto:nozdrin@list.ru">nozdrin@list.ru</a></div>
+      <div class="c-card reveal"><span class="ico">📞</span><b>Phone / WhatsApp</b><a href="tel:+66628423951">+66 6 2842 3951 — Phone</a><br><a href="https://wa.me/79092365321">+7 909 236-53-21 — WhatsApp</a></div>
+      <div class="c-card reveal"><span class="ico">📍</span><b>Location</b><span class="val">Phuket, Thailand</span></div>
+    </div>
+    <div class="note reveal">resume: <a href="Resume_Andrei_Nozdrin_EN.docx" download>download DOCX</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><b>Andrei Nozdrin</b> · Engineering · © <span id="year"></span></div>
+</footer>
+
+<script>
+  // mobile menu
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+  // year
+  document.getElementById('year').textContent=new Date().getFullYear();
+  // ===== portfolio carousels =====
+  const PF={
+    ac:[
+      ["portfolio/split-outdoor-wall.jpg","Multi-split outdoor units — installation"],
+      ["portfolio/split-cassette-1.jpg","Cassette split unit — installation & service"],
+      ["portfolio/split-cassette-2.jpg","Cassette unit — maintenance"],
+      ["portfolio/split-wall.jpg","Wall split system — installation / repair / service"],
+      ["portfolio/ac/IMG_20240411_154419.jpg",""],
+      ["portfolio/ac/IMG_20240526_105104.jpg",""],
+      ["portfolio/ac/IMG_20240529_101815.jpg",""],
+      ["portfolio/ac/IMG_20240530_140245.jpg",""],
+      ["portfolio/ac/IMG_20240604_155753.jpg",""],
+      ["portfolio/ac/IMG_20240701_184138.jpg",""],
+      ["portfolio/ac/IMG_20240701_191010.jpg",""],
+      ["portfolio/ac/IMG_20240710_112307.jpg",""],
+      ["portfolio/ac/IMG_20240710_115332.jpg",""],
+      ["portfolio/ac/IMG_20240710_120556.jpg",""],
+      ["portfolio/ac/IMG_20240712_151248.jpg",""],
+      ["portfolio/ac/IMG_20240713_164559.jpg",""],
+      ["portfolio/ac/IMG_20240718_205747.jpg",""],
+      ["portfolio/ac/IMG_20240721_145652.jpg",""],
+      ["portfolio/ac/IMG_20240730_133902_1.jpg",""],
+      ["portfolio/ac/photo_2026-11-04_06-38-47 (2).jpg",""],
+      ["portfolio/ac/photo_2026-11-04_06-38-47 (3).jpg",""],
+      ["portfolio/ac/photo_2026-11-04_06-38-48 (2).jpg",""],
+      ["portfolio/ac/photo_2026-11-04_06-39-14.jpg",""],
+      ["portfolio/ac/photo_2026-11-04_06-39-18.jpg",""],
+      ["portfolio/ac/photo_2026-11-04_06-39-24.jpg",""],
+      ["portfolio/ac/photo_2026-11-05_19-46-14.jpg",""],
+      ["portfolio/ac/photo_2026-11-05_19-46-17.jpg",""],
+      ["portfolio/ac/photo_2026-11-05_19-46-18.jpg",""],
+      ["portfolio/ac/photo_2026-11-05_19-46-20.jpg",""],
+      ["portfolio/ac/photo_2026-11-05_19-46-22.jpg",""],
+      ["portfolio/ac/photo_2026-11-05_19-46-23.jpg",""],
+      ["portfolio/ac/photo_2026-11-05_19-46-26.jpg",""]
+    ],
+    fridge:[
+      ["portfolio/refrigeration-coil-1.jpg","Refrigeration system — condenser coil"],
+      ["portfolio/refrigeration-coil-2.jpg","Heat exchanger — inspection & repair"],
+      ["portfolio/refrigeration-service.jpg","Commercial refrigeration — service"],
+      ["portfolio/refrigeration-diagnostics.jpg","Refrigerant circuits — diagnostics & service"],
+      ["portfolio/refrigeration-undercounter.jpg","Under-counter refrigeration — repair"],
+      ["portfolio/fridge/IMG_20240515_124040.jpg",""],
+      ["portfolio/fridge/IMG_20240515_153950.jpg",""],
+      ["portfolio/fridge/IMG_20240515_154010.jpg",""],
+      ["portfolio/fridge/IMG_20240515_154014.jpg",""],
+      ["portfolio/fridge/IMG_20240515_154017.jpg",""],
+      ["portfolio/fridge/IMG_20240515_154206.jpg",""],
+      ["portfolio/fridge/IMG_20240523_111628.jpg",""],
+      ["portfolio/fridge/IMG_20240523_115245.jpg",""],
+      ["portfolio/fridge/IMG_20240529_184642.jpg",""],
+      ["portfolio/fridge/IMG_20240529_190212.jpg",""],
+      ["portfolio/fridge/IMG_20240611_101044.jpg",""],
+      ["portfolio/fridge/IMG_20240620_180446.jpg",""],
+      ["portfolio/fridge/IMG_20240626_122958.jpg",""],
+      ["portfolio/fridge/IMG_20240626_125559.jpg",""],
+      ["portfolio/fridge/IMG_20240701_155228.jpg",""],
+      ["portfolio/fridge/IMG_20240705_143227.jpg",""],
+      ["portfolio/fridge/IMG_20240710_212311.jpg",""],
+      ["portfolio/fridge/IMG_20240711_142931.jpg",""],
+      ["portfolio/fridge/IMG_20240711_142940.jpg",""],
+      ["portfolio/fridge/IMG_20240715_181242.jpg",""],
+      ["portfolio/fridge/IMG_20240719_175927.jpg",""],
+      ["portfolio/fridge/photo_2026-11-04_06-39-15 (2).jpg",""],
+      ["portfolio/fridge/photo_2026-11-04_06-39-15.jpg",""],
+      ["portfolio/fridge/photo_2026-11-04_06-39-16.jpg",""],
+      ["portfolio/fridge/photo_2026-11-04_06-39-21.jpg",""],
+      ["portfolio/fridge/photo_2026-11-04_06-39-22 (2).jpg",""],
+      ["portfolio/fridge/photo_2026-11-04_06-39-23.jpg",""],
+      ["portfolio/fridge/photo_2026-11-04_06-39-24 (2).jpg",""],
+      ["portfolio/fridge/photo_2026-11-04_06-39-24 (3).jpg",""],
+      ["portfolio/fridge/photo_2026-11-05_19-46-19.jpg",""]
+    ],
+    kitchen:[
+      ["portfolio/induction-hob-1.jpg","Induction hob — repair"],
+      ["portfolio/induction-hob-2.jpg","Induction hob — board repair"],
+      ["portfolio/coffee-machine.jpg","Commercial coffee machine — repair"],
+      ["portfolio/combi-oven-1.jpg","Combi oven — repair"],
+      ["portfolio/combi-oven-2.jpg","Combi oven — repair & service"],
+      ["portfolio/ice-maker.jpg","Ice maker — repair"],
+      ["portfolio/rice-cooker.jpg","Rice cooker — repair"],
+      ["portfolio/kitchen/IMG_20240520_140200.jpg",""],
+      ["portfolio/kitchen/IMG_20240520_140312.jpg",""],
+      ["portfolio/kitchen/IMG_20240520_140440.jpg",""],
+      ["portfolio/kitchen/IMG_20240624_103214.jpg",""],
+      ["portfolio/kitchen/IMG_20240711_181208.jpg",""],
+      ["portfolio/kitchen/IMG_20240711_181211.jpg",""],
+      ["portfolio/kitchen/photo_2026-11-04_06-39-17.jpg",""],
+      ["portfolio/kitchen/photo_2026-11-05_19-46-16.jpg",""]
+    ],
+    elec:[
+      ["portfolio/elec/IMG_20240226_141440.jpg",""],
+      ["portfolio/elec/IMG_20240319_122613.jpg",""],
+      ["portfolio/elec/IMG_20240320_135355.jpg",""],
+      ["portfolio/elec/IMG_20240320_135403.jpg",""],
+      ["portfolio/elec/IMG_20240410_144924.jpg",""],
+      ["portfolio/elec/IMG_20240412_164226.jpg",""]
+    ],
+    water:[
+      ["portfolio/water/IMG_20240413_160955.jpg",""],
+      ["portfolio/water/IMG_20240509_125852.jpg",""],
+      ["portfolio/water/IMG_20240517_201639.jpg",""],
+      ["portfolio/water/IMG_20240526_114545.jpg",""],
+      ["portfolio/water/IMG_20240531_180249.jpg",""],
+      ["portfolio/water/IMG_20240628_181629.jpg",""],
+      ["portfolio/water/IMG_20240701_201055.jpg",""],
+      ["portfolio/water/IMG_20240701_201127.jpg",""],
+      ["portfolio/water/IMG_20240701_201441.jpg",""],
+      ["portfolio/water/IMG_20240707_205306.jpg",""],
+      ["portfolio/water/IMG_20240710_175026.jpg",""],
+      ["portfolio/water/IMG_20240710_180711.jpg",""],
+      ["portfolio/water/IMG_20240710_200254.jpg",""],
+      ["portfolio/water/IMG_20240710_200620.jpg",""],
+      ["portfolio/water/IMG_20240713_104043.jpg",""],
+      ["portfolio/water/IMG_20240713_210519.jpg",""],
+      ["portfolio/water/IMG_20240715_105319.jpg",""],
+    ],
+    hh:[
+      ["portfolio/household-2.jpg","Household repairs — diagnostics"],
+      ["portfolio/household-3.jpg","Household repairs — kitchen equipment"],
+      ["portfolio/household-4.jpg","Household repairs — wiring & control"],
+      ["portfolio/household-5.jpg","Household repairs — components & boards"],
+      ["portfolio/hh/IMG_20240223_161220.jpg",""],
+      ["portfolio/hh/IMG_20240225_131257.jpg",""],
+      ["portfolio/hh/IMG_20240301_192559.jpg",""],
+      ["portfolio/hh/IMG_20240406_153006.jpg",""],
+      ["portfolio/hh/IMG_20240407_102704.jpg",""],
+      ["portfolio/hh/IMG_20240407_153036.jpg",""],
+      ["portfolio/hh/IMG_20240407_153220.jpg",""],
+      ["portfolio/hh/IMG_20240407_172555.jpg",""],
+      ["portfolio/hh/IMG_20240412_134143.jpg",""],
+      ["portfolio/hh/IMG_20240412_134213.jpg",""],
+      ["portfolio/hh/IMG_20240412_134232.jpg",""],
+      ["portfolio/hh/IMG_20240412_164219.jpg",""],
+      ["portfolio/hh/IMG_20240413_143813.jpg",""],
+      ["portfolio/hh/IMG_20240418_111902.jpg",""],
+      ["portfolio/hh/IMG_20240418_160542.jpg",""],
+      ["portfolio/hh/IMG_20240418_160936.jpg",""],
+      ["portfolio/hh/IMG_20240424_203016.jpg",""],
+      ["portfolio/hh/IMG_20240427_180419.jpg",""],
+      ["portfolio/hh/IMG_20240504_201223.jpg",""],
+      ["portfolio/hh/IMG_20240516_131820.jpg",""],
+      ["portfolio/hh/IMG_20240516_132131.jpg",""],
+      ["portfolio/hh/IMG_20240518_184341.jpg",""]
+    ]
+  };
+  function pfRender(){
+    document.querySelectorAll('.car-track').forEach(track=>{
+      const key=track.parentElement.getAttribute('data-cat');
+      const items=PF[key]||[];
+      track.innerHTML='';
+      items.forEach(pair=>{
+        const src=pair[0];
+        const f=document.createElement('figure');
+        f.className='pf-item';
+        const img=document.createElement('img');
+        img.loading='lazy';img.src=src;img.alt='Work photo';
+        f.appendChild(img);
+        track.appendChild(f);
+      });
+    });
+  }
+  document.querySelectorAll('.carousel').forEach(car=>{
+    const track=car.querySelector('.car-track');
+    const step=()=>Math.round(track.clientWidth*0.8)||320;
+    car.querySelector('.car-prev').addEventListener('click',()=>track.scrollBy({left:-step(),behavior:'smooth'}));
+    car.querySelector('.car-next').addEventListener('click',()=>track.scrollBy({left:step(),behavior:'smooth'}));
+  });
+  pfRender();
+
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
